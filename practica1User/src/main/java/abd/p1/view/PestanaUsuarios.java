@@ -132,8 +132,8 @@ public class PestanaUsuarios extends javax.swing.JPanel {
     }//GEN-LAST:event_buttonModificarPerfilActionPerformed
 
     private void buttonVerPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonVerPerfilActionPerformed
-        if(!user.getAmigos().isEmpty()){
-            Usuario usr = listaUsuarios1.getSelectedUser();
+        Usuario usr = listaUsuarios1.getSelectedUser();
+        if(!user.getAmigos().isEmpty() && usr != null){
             PerfilUsuario perfil = new PerfilUsuario(null,true,usr);
             perfil.setTitle("Información de perfil");
             perfil.setEditable(false);
@@ -142,7 +142,7 @@ public class PestanaUsuarios extends javax.swing.JPanel {
     }//GEN-LAST:event_buttonVerPerfilActionPerformed
 
     private void filtrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filtrarActionPerformed
-        
+        //FALTA IMPLEMENTAR!!!!
     }//GEN-LAST:event_filtrarActionPerformed
 
     private void filtroAmigosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filtroAmigosActionPerformed
@@ -156,7 +156,7 @@ public class PestanaUsuarios extends javax.swing.JPanel {
     }//GEN-LAST:event_filtroAmigosActionPerformed
 
     private void nombreFiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreFiltroActionPerformed
-        
+        //FALTA IMPLEMENTAR!!!!
     }//GEN-LAST:event_nombreFiltroActionPerformed
 
 

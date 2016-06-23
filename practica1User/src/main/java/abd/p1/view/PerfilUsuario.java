@@ -36,6 +36,8 @@ public class PerfilUsuario extends javax.swing.JDialog {
         this.userPanel1.setNombre(user.getNombre());
         this.userPanel1.setEdad(user.getYears());
         this.userPanel1.getAvatarPanel().setIcon(user.getFoto());
+        this.jLabel3.setVisible(false);
+        this.labelDistancia.setVisible(false);
     }
 
     public PerfilUsuario(JFrame jFrame, boolean b) {}
@@ -56,8 +58,12 @@ public class PerfilUsuario extends javax.swing.JDialog {
         this.buttonEliminarAficion.setVisible(editable);
         this.buttonGuardar.setVisible(editable);
         this.descripcion.setEditable(editable);
-        this.jLabel3.setVisible(editable);
-        this.labelDistancia.setVisible(editable);
+        
+        //Sólo visible la distancia en la vista Ver Perfil
+        if(!editable){
+            this.jLabel3.setVisible(true);
+            this.labelDistancia.setVisible(true); 
+        }
     }
     
 
