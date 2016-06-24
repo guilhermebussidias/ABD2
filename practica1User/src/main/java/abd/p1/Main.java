@@ -13,7 +13,9 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import abd.p1.controller.Facade;
 import abd.p1.controller.UsuarioController;
 import abd.p1.model.Usuario;
+import abd.p1.view.InicioSesion;
 import abd.p1.view.InicioSesionJDialog;
+import abd.p1.view.MainWindow;
 import abd.p1.view.PrincipalJFrame;
 import abd.p1.view.ViewManager;
 
@@ -49,17 +51,13 @@ public class Main {
             // Si son validos, mostrar ventana principal.
             
             
-            
-
-            //SessionMgr.setSessionFactory(sf);
             Facade.setSessionFactory(sf);
-            //SessionManager.setSessionFactory(sf);
             
-            InicioSesionJDialog inicioSesion = new InicioSesionJDialog(null, true);
+            InicioSesion inicioSesion = new InicioSesion(null, true);
             inicioSesion.setVisible(true);
-            String email = inicioSesion.getEmail();
-            String password = inicioSesion.getPassword();
-            boolean isNuevoUsuario = inicioSesion.isNuevoUsuario();
+            String email = inicioSesion.getContrasena();
+            String password = inicioSesion.getCorreo();
+            boolean isNuevoUsuario = !inicioSesion.isAccept();
             inicioSesion.dispose();
             
             UsuarioController usuarioCtrl = new UsuarioController(sf);
@@ -84,7 +82,7 @@ public class Main {
             
             ViewManager.getInstance().setUsuario(usuario);
             
-            PrincipalJFrame mainWindow = new PrincipalJFrame();
+            MainWindow mainWindow = new MainWindow();
             mainWindow.setVisible(true);
             
             if (isNuevoUsuario) {

@@ -16,11 +16,13 @@ public class MainWindow extends javax.swing.JFrame {
 
     public MainWindow() {
         initComponents();
+        addCloseListener();
         
         boolean check = false;
         
         jTabbedPane1.setTitleAt(0, "Usuarios");
         
+        /*
         InicioSesion ini = new InicioSesion(this,true);
         ini.setVisible(true);
         
@@ -85,6 +87,7 @@ public class MainWindow extends javax.swing.JFrame {
             perfil.setVisible(true);
             this.pestanaUsuarios1.setUser(user);
         }
+        */
     }
 
     /**
@@ -165,4 +168,36 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private abd.p1.view.PestanaUsuarios pestanaUsuarios1;
     // End of variables declaration//GEN-END:variables
+
+	
+	private boolean _isClosed = false;
+    
+    public boolean isClosed() {
+		return _isClosed;
+	}
+    
+    public synchronized void close() {
+    	setVisible(false);
+    	_isClosed = true;
+    	notify();
+    }
+    
+    public synchronized void waitUntilClose() {
+    	while (!isClosed()) {
+    		try {
+    			wait();
+    		} catch (InterruptedException e) {
+    			
+    		}
+    	}
+    }
+    
+    private void addCloseListener() {
+        addWindowListener(new java.awt.event.WindowAdapter() {
+        	@Override
+        	public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+        		close();
+        	}
+        });
+    }
 }
