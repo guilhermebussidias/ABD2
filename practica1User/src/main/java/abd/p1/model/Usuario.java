@@ -1,11 +1,17 @@
 package abd.p1.model;
 
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.imageio.ImageIO;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
@@ -18,6 +24,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.swing.ImageIcon;
 @Entity
 public class Usuario {
 	@Id
@@ -321,5 +328,56 @@ public class Usuario {
 		return "NOMBRE: " + this.getNombre() + ", EMAIL: " + this.getEmail() +
 				", CONTRASEÑA: " + this.getContrasena() + ", DESCRIPCION: " + this.getDescripcion() +
 				", FECHA NAC: " + this.getFechaNacimiento();
+	}
+	
+	public int getEdad() {
+		Calendar dobDate = Calendar.getInstance();
+		dobDate.setTime(this.getFechaNacimiento());
+		Calendar today = Calendar.getInstance();
+		int curYear = today.get(Calendar.YEAR);
+		int curMonth = today.get(Calendar.MONTH);
+		int curDay = today.get(Calendar.DAY_OF_MONTH);
+
+		int year = dobDate.get(Calendar.YEAR);
+		int month = dobDate.get(Calendar.MONTH);
+		int day = dobDate.get(Calendar.DAY_OF_MONTH);
+
+		int age = curYear - year;
+		if (curMonth < month || (month == curMonth && curDay < day)) {
+		    age--;
+		}
+		
+		return age;
+	}
+	
+	public void setAficion(Aficion a) {
+		this.aficiones.add(a);
+	}
+	
+	public void borrarAficion(Aficion a) {
+		this.aficiones.remove(a);
+	}
+	
+	public void setFotoFromByteArray(ImageIcon ic) {
+		BufferedImage bi = new BufferedImage(
+		              ic.getIconWidth(), ic.getIconHeight(), 
+		              BufferedImage.TYPE_INT_RGB
+		           );
+		Graphics g = bi.getGraphics();
+		ic.paintIcon(null, g, 0, 0);
+		g.dispose();
+		ByteArrayOutputStream byteStream = new ByteArrayOutputStream(); 
+		try {
+			ImageIO.write(bi, "png", byteStream);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		byte[] array = byteStream.toByteArray();
+		this.setFoto(array);
+	}
+	
+	public ImageIcon getFotoAsImageIcon() {
+		return new ImageIcon(getFoto());
 	}
 }

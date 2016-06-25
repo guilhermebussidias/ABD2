@@ -34,8 +34,8 @@ public class PerfilUsuario extends javax.swing.JDialog {
         this.labelOrientacionSexual.setText(user.getOpcionSexual());
         this.userPanel1.setUser(user);
         this.userPanel1.setNombre(user.getNombre());
-        this.userPanel1.setEdad(user.getYears());
-        this.userPanel1.getAvatarPanel().setIcon(user.getFoto());
+        this.userPanel1.setEdad(user.getEdad() + "");
+        this.userPanel1.getAvatarPanel().setIcon(user.getFotoAsImageIcon());
         this.jLabel3.setVisible(false);
         this.labelDistancia.setVisible(false);
     }
