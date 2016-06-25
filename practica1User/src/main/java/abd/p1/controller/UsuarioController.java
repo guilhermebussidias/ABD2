@@ -120,6 +120,13 @@ public class UsuarioController {
 	}*/
 	
 	public void save(Usuario usr) {
-		usuarioDAO.persist(usr);
+		usuarioDAO.save(usr);
+		usuarioDAO.evict(usr); // Para evitar que se guarden los cambios
+	}
+	
+	public void update(Usuario usr) {
+		//usuarioDAO.reattach(usr);
+		usuarioDAO.update(usr);
+		usuarioDAO.evict(usr); // Para evitar que se guarden los cambios
 	}
 }

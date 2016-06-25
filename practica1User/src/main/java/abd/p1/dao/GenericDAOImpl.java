@@ -52,7 +52,7 @@ public abstract class GenericDAOImpl<Entity, Id extends Serializable> implements
 	}
 
 	@Override
-	public void persist(Entity entity) {
+	public void save(Entity entity) {
 		//Session s = this.sf.openSession();
 		//Session s = getSession();
 		try {
@@ -69,12 +69,13 @@ public abstract class GenericDAOImpl<Entity, Id extends Serializable> implements
 
 	@Override
 	public void update(Entity entity) {
-		Session s = getSession();
+		//Session s = getSession();
 		try {
-			//Session s = begin();
-			Transaction tx = s.beginTransaction();
+			Session s = begin();
+			//Transaction tx = s.beginTransaction();
 			s.update(entity);
-			tx.commit();
+			//tx.commit();
+			commit();
 		} catch (HibernateException e) {
 			rollback();
 			e.printStackTrace();

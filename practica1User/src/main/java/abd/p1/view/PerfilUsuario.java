@@ -1,5 +1,6 @@
 package abd.p1.view;
 
+import abd.p1.controller.Facade;
 import abd.p1.model.Aficion;
 import abd.p1.model.Usuario;
 import javax.swing.DefaultListModel;
@@ -9,7 +10,8 @@ import javax.swing.JOptionPane;
 
 public class PerfilUsuario extends javax.swing.JDialog {
     
-    private Usuario user;
+	private static final long serialVersionUID = 1L;
+	private Usuario user;
     private boolean editable, guardar;
     DefaultListModel<Aficion> modelo = new DefaultListModel<>();
 
@@ -21,7 +23,9 @@ public class PerfilUsuario extends javax.swing.JDialog {
         initComponents();
         
         this.user = user;
-        this.descripcion.setText(user.getDescripcion());
+        String txt = user.getDescripcion() == null ? "" : user.getDescripcion();
+        this.descripcion.setText(txt);
+        System.out.println("PerfilUsuario -> " + user);//FIXME
         
         if(user.getAficiones().isEmpty() ==  false){
            for (Aficion temp : user.getAficiones()){
@@ -276,6 +280,8 @@ public class PerfilUsuario extends javax.swing.JDialog {
 
     private void buttonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGuardarActionPerformed
       this.user.setDescripcion(this.descripcion.getText());
+      System.out.println("ID: " + user.getId());//FIXME
+      Facade.getInstance().getUsuarioController().update(user);
       this.setVisible(false);
     }//GEN-LAST:event_buttonGuardarActionPerformed
 

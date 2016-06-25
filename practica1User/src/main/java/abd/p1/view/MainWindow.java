@@ -1,22 +1,28 @@
 package abd.p1.view;
 
+import abd.p1.controller.Facade;
 import abd.p1.model.Usuario;
 
 public class MainWindow extends javax.swing.JFrame {
 
 	private static final long serialVersionUID = 1L;
+	
+	Usuario usuario;
 
 	public MainWindow() {}
 	
-	public MainWindow(Usuario usuario, boolean nuevoUsuario) {
+	public MainWindow(Usuario usuario, boolean isNuevoUsuario) {
+        this.usuario = usuario;
+        
         initComponents();
         
         addCloseListener();
         
         jTabbedPane1.setTitleAt(0, "Usuarios");
         
-        if (nuevoUsuario) {
-	        PerfilUsuario perfil = new PerfilUsuario(null,true, usuario);
+        if (isNuevoUsuario) {
+	        Facade.getInstance().getUsuarioController().save(usuario);
+	        PerfilUsuario perfil = new PerfilUsuario(this, true, usuario);
 	        perfil.setEditable(true);
 	        perfil.setVisible(true);
         }
@@ -101,7 +107,7 @@ public class MainWindow extends javax.swing.JFrame {
     private void initComponents() {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        pestanaUsuarios1 = new abd.p1.view.PestanaUsuarios();
+        pestanaUsuarios1 = new abd.p1.view.PestanaUsuarios(this.usuario);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 

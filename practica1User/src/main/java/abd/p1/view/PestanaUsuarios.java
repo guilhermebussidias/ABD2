@@ -6,11 +6,15 @@ import java.util.Set;
 
 public class PestanaUsuarios extends javax.swing.JPanel {
 
-    private Usuario user = new Usuario();
+	private static final long serialVersionUID = 1L;
+	//private Usuario user = new Usuario();
+	private Usuario user;
     /**
      * Creates new form PestanaUsuarios
      */
-    public PestanaUsuarios() {
+    public PestanaUsuarios(Usuario usuario) {
+        System.out.println("Pest -> " + usuario);//FIXME
+        user = usuario;
         initComponents();
     }
     
@@ -122,7 +126,7 @@ public class PestanaUsuarios extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonModificarPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonModificarPerfilActionPerformed
-       user = this.getUser();
+       //user = this.getUser();
        PerfilUsuario perfil = new PerfilUsuario(null,true,user);
        UserPanel panel = new UserPanel();
        panel = perfil.getUserPanel1();

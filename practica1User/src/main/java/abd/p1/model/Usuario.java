@@ -325,7 +325,7 @@ public class Usuario {
 	}
 	
 	public String toString() {
-		return "NOMBRE: " + this.getNombre() + ", EMAIL: " + this.getEmail() +
+		return "ID: " + this.getId() +  ", NOMBRE: " + this.getNombre() + ", EMAIL: " + this.getEmail() +
 				", CONTRASEÑA: " + this.getContrasena() + ", DESCRIPCION: " + this.getDescripcion() +
 				", FECHA NAC: " + this.getFechaNacimiento();
 	}
@@ -360,7 +360,7 @@ public class Usuario {
 		this.aficiones.remove(a);
 	}
 	
-	public void setFotoFromByteArray(ImageIcon ic) {
+	public void setFotoFromImageIcon(ImageIcon ic) {
 		BufferedImage bi = new BufferedImage(
 		              ic.getIconWidth(), ic.getIconHeight(), 
 		              BufferedImage.TYPE_INT_RGB

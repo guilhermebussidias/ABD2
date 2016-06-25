@@ -170,7 +170,7 @@ public class UserPanel extends javax.swing.JPanel {
                 File image = file.getSelectedFile();
                 try {
                     this.avatarPanel1.setIcon(new ImageIcon(ImageIO.read(image)));
-                    usr.setFoto(new ImageIcon(ImageIO.read(image)));
+                    usr.setFotoFromImageIcon(new ImageIcon(ImageIO.read(image)));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -192,7 +192,7 @@ public class UserPanel extends javax.swing.JPanel {
         cal.setVisible(true);
         if (cal.isAceptar()) {
             this.fecha = cal.getFechaNacimiento();
-            usr.setFechacimiento(this.fecha);
+            usr.setFechaNacimiento(this.fecha);
             Calendar birthDay = Calendar.getInstance();
             birthDay.setTimeInMillis(this.fecha.getTime());
             long currentTime = System.currentTimeMillis();

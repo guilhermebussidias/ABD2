@@ -239,4 +239,12 @@ public class UsuarioDAOImpl extends GenericDAOImpl<Usuario, Integer> implements 
 		s.evict(usr);
 		commit();
 	}
+
+	@Override
+	public void reattach(Usuario usr) {
+		Session s = begin();
+		s.merge(usr);
+		commit();
+		
+	}
 }

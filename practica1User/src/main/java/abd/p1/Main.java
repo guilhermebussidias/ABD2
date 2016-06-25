@@ -57,7 +57,7 @@ public class Main {
             boolean isNuevoUsuario = !inicioSesion.isAccept();
             inicioSesion.dispose();
             
-            UsuarioController usuarioCtrl = new UsuarioController(sf);
+            //UsuarioController usuarioCtrl = new UsuarioController(sf);
             Usuario usuario = null;
             
             if (isNuevoUsuario) {
@@ -68,7 +68,7 @@ public class Main {
             	GregorianCalendar cal = new GregorianCalendar(1970, 0, 1);
             	usuario.setFechaNacimiento(cal.getTime());
             } else {
-            	usuario = usuarioCtrl.doLogin(email, password);
+            	usuario = Facade.getInstance().getUsuarioController().doLogin(email, password);
             	//System.out.println(usuario);//FIXME
             }
             
