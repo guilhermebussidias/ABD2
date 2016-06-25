@@ -3,6 +3,7 @@ package abd.p1.view;
 import abd.p1.model.Aficion;
 import abd.p1.model.Usuario;
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -35,7 +36,12 @@ public class PerfilUsuario extends javax.swing.JDialog {
         this.userPanel1.setUser(user);
         this.userPanel1.setNombre(user.getNombre());
         this.userPanel1.setEdad(user.getEdad() + "");
-        this.userPanel1.getAvatarPanel().setIcon(user.getFotoAsImageIcon());
+        
+        ImageIcon img = user.getFotoAsImageIcon();
+        if (img == null)
+        	img = new ImageIcon(AvatarPanel.class.getResource("Dino3.png"));
+    	this.userPanel1.getAvatarPanel().setIcon(img);
+        	
         this.jLabel3.setVisible(false);
         this.labelDistancia.setVisible(false);
     }

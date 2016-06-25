@@ -331,8 +331,10 @@ public class Usuario {
 	}
 	
 	public int getEdad() {
+		if (fechaNacimiento == null)
+			return 0;
 		Calendar dobDate = Calendar.getInstance();
-		dobDate.setTime(this.getFechaNacimiento());
+		dobDate.setTime(fechaNacimiento);
 		Calendar today = Calendar.getInstance();
 		int curYear = today.get(Calendar.YEAR);
 		int curMonth = today.get(Calendar.MONTH);
@@ -378,6 +380,8 @@ public class Usuario {
 	}
 	
 	public ImageIcon getFotoAsImageIcon() {
-		return new ImageIcon(getFoto());
+		if (getFoto() != null)
+			return new ImageIcon(getFoto());
+		return null;
 	}
 }
