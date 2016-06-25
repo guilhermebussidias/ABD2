@@ -1,28 +1,24 @@
 package abd.p1.view;
 
-import abd.p1.model.Aficion;
 import abd.p1.model.Usuario;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
 
 public class MainWindow extends javax.swing.JFrame {
 
-    public MainWindow() {
+	private static final long serialVersionUID = 1L;
+
+	public MainWindow() {}
+	
+	public MainWindow(Usuario usuario, boolean nuevoUsuario) {
         initComponents();
         addCloseListener();
         
-        boolean check = false;
+        //
         
         jTabbedPane1.setTitleAt(0, "Usuarios");
         
         /*
+        boolean check = false;
+        
         InicioSesion ini = new InicioSesion(this,true);
         ini.setVisible(true);
         
