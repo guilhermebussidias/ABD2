@@ -10,11 +10,16 @@ public class MainWindow extends javax.swing.JFrame {
 	
 	public MainWindow(Usuario usuario, boolean nuevoUsuario) {
         initComponents();
+        
         addCloseListener();
         
-        //
-        
         jTabbedPane1.setTitleAt(0, "Usuarios");
+        
+        if (nuevoUsuario) {
+	        PerfilUsuario perfil = new PerfilUsuario(null,true, usuario);
+	        perfil.setEditable(true);
+	        perfil.setVisible(true);
+        }
         
         /*
         boolean check = false;

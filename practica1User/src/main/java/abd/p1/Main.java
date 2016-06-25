@@ -14,10 +14,7 @@ import abd.p1.controller.Facade;
 import abd.p1.controller.UsuarioController;
 import abd.p1.model.Usuario;
 import abd.p1.view.InicioSesion;
-import abd.p1.view.InicioSesionJDialog;
 import abd.p1.view.MainWindow;
-import abd.p1.view.PrincipalJFrame;
-import abd.p1.view.ViewManager;
 
 /**
  * Ésta es la clase que arranca la aplicación. La ejecución del método main()
@@ -80,15 +77,18 @@ public class Main {
             	return;
             }
             
-            ViewManager.getInstance().setUsuario(usuario);
+            //ViewManager.getInstance().setUsuario(usuario);
             
-            MainWindow mainWindow = new MainWindow();
+            /*MainWindow mainWindow = new MainWindow();
             mainWindow.setVisible(true);
             
             if (isNuevoUsuario) {
             	mainWindow.setUsuarioPerfilado(usuario);
             	mainWindow.mostrarPerfil();
-            }
+            }*/
+            
+            MainWindow mainWindow = new MainWindow(usuario, isNuevoUsuario);
+            mainWindow.setVisible(true);
             
             mainWindow.waitUntilClose();
             
