@@ -12,6 +12,8 @@ public class ListaUsuarios extends javax.swing.JPanel {
 	
 	public ListaUsuarios() {
         initComponents();
+        jlistUsuarios.setCellRenderer(new UsuarioCellRenderer());
+        this.grabFocus();
     }
     
     public void setUsuariosRelacionados(Iterable<Usuario> amigos){
@@ -21,8 +23,8 @@ public class ListaUsuarios extends javax.swing.JPanel {
             Usuario usr = it.next();
              modelo.addElement(usr);
         }
-       jlistUsuarios.setModel(modelo);
-       jlistUsuarios.setCellRenderer(new UsuarioCellRenderer());
+        //jlistUsuarios.setCellRenderer(new UsuarioCellRenderer());
+        jlistUsuarios.setModel(modelo);
     }
     
     public Usuario getSelectedUser(){

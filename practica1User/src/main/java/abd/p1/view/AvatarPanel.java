@@ -28,6 +28,8 @@ public class AvatarPanel extends javax.swing.JPanel {
         this.icon = icon;
         this.rescaledIcon = icon.getImage().getScaledInstance(SIZE, SIZE, Image.SCALE_DEFAULT);
         initComponents();
+        this.setOpaque(true);
+        repaint();
     }
 
     public ImageIcon getIcon() {

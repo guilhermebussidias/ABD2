@@ -65,9 +65,9 @@ public class Main {
             	usuario.setNombre("<Sin nombre>");
             	GregorianCalendar cal = new GregorianCalendar(1970, 0, 1);
             	usuario.setFechaNacimiento(cal.getTime());
+    	        Facade.getInstance().getUsuarioController().save(usuario);
             } else {
             	usuario = Facade.getInstance().getUsuarioController().doLogin(email, password);
-    	        Facade.getInstance().getUsuarioController().save(usuario);
             }
             
             if (usuario == null) {
