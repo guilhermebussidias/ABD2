@@ -9,12 +9,6 @@ import abd.p1.model.Usuario;
 public class ListaUsuarios extends javax.swing.JPanel {
   
 	private static final long serialVersionUID = 1L;
-	/*private Usuario user;
-	
-	public ListaUsuarios(Usuario usr) {
-		user = usr;
-        initComponents();
-    }*/
 	
 	public ListaUsuarios() {
         initComponents();

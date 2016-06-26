@@ -1,15 +1,15 @@
 package abd.p1.view;
 
-import abd.p1.controller.Facade;
-import abd.p1.model.Aficion;
-import abd.p1.model.Usuario;
-
 import java.text.DecimalFormat;
 
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+
+import abd.p1.controller.Facade;
+import abd.p1.model.Aficion;
+import abd.p1.model.Usuario;
 
 public class PerfilUsuario extends javax.swing.JDialog {
     
