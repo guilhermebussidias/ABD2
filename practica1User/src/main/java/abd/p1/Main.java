@@ -11,7 +11,6 @@ import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
 import abd.p1.controller.Facade;
-import abd.p1.controller.UsuarioController;
 import abd.p1.model.Usuario;
 import abd.p1.view.InicioSesion;
 import abd.p1.view.MainWindow;
@@ -68,12 +67,15 @@ public class Main {
             	usuario.setFechaNacimiento(cal.getTime());
             } else {
             	usuario = Facade.getInstance().getUsuarioController().doLogin(email, password);
+    	        Facade.getInstance().getUsuarioController().save(usuario);
             }
             
             if (usuario == null) {
             	JOptionPane.showMessageDialog(null, "El usuario no existe o la contraseña es incorrecta");
             	return;
             }
+            
+            Facade.getInstance().getUsuarioController().storeRandomCoordinates(usuario);
             
             MainWindow mainWindow = new MainWindow(usuario, isNuevoUsuario);
             mainWindow.setVisible(true);

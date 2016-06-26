@@ -10,11 +10,12 @@ public class SphericalGeometry {
 	public static double haversineFormula(double lat1, double long1, double lat2, double long2) {
 		double phiDiff = lat1 - lat2;
 		double thetaDiff = long1 - long2;
-		double sinSqPhi = Math.pow(Math.sin(phiDiff / 2), 2);
-		double sinSqTheta = Math.pow(Math.sin(thetaDiff / 2), 2);
-		double a = sinSqPhi + Math.cos(lat1) * Math.cos(lat2) + sinSqTheta;
+		double a = Math.sin(phiDiff/2) * Math.sin(phiDiff/2) +
+				Math.cos(lat1) * Math.cos(lat2) *
+				Math.sin(thetaDiff/2) * Math.sin(thetaDiff/2);
 		double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-		return R * c;
+		double res = R * c;
+		return res;
 	}
 	
 	public static double haversineFormulaDegrees(double lat1, double long1, double lat2, double long2) {

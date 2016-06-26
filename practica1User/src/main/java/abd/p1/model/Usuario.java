@@ -328,7 +328,9 @@ public class Usuario {
 	}
 	
 	public String toString() {
-		return "ID: " + this.getId() +  ", NOMBRE: " + this.getNombre() + ", EMAIL: " + this.getEmail() +
+		return "ID: " + this.getId() +  ", NOMBRE: " + this.getNombre() + 
+				", LATITUD: " + this.getLatitud() + ", LONGITUD: " + this.getLongitud() +
+				", EMAIL: " + this.getEmail() +
 				", CONTRASEÑA: " + this.getContrasena() + ", DESCRIPCION: " + this.getDescripcion() +
 				", FECHA NAC: " + this.getFechaNacimiento();
 	}

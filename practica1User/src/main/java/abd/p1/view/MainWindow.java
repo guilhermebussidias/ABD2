@@ -21,8 +21,8 @@ public class MainWindow extends javax.swing.JFrame {
         jTabbedPane1.setTitleAt(0, "Usuarios");
         
         if (isNuevoUsuario) {
-	        Facade.getInstance().getUsuarioController().save(usuario);
-	        PerfilUsuario perfil = new PerfilUsuario(this, true, usuario);
+	        //Facade.getInstance().getUsuarioController().save(usuario);
+	        PerfilUsuario perfil = new PerfilUsuario(this, true, usuario, null);
 	        perfil.setEditable(true);
 	        perfil.setVisible(true);
         }

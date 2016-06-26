@@ -1,21 +1,38 @@
 package abd.p1.view;
 
+import abd.p1.controller.Facade;
 import abd.p1.model.Usuario;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 public class PestanaUsuarios extends javax.swing.JPanel {
 
 	private static final long serialVersionUID = 1L;
-	//private Usuario user = new Usuario();
 	private Usuario user;
     /**
      * Creates new form PestanaUsuarios
      */
     public PestanaUsuarios(Usuario usuario) {
-        System.out.println("Pest -> " + usuario);//FIXME
         user = usuario;
         initComponents();
+        showFilteredUsers();
+        
+        // Para que se modifique la lista cuando se cambie el textBox:
+        nombreFiltro.getDocument().addDocumentListener(new DocumentListener() {
+            public void changedUpdate(DocumentEvent e) {
+            	showFilteredUsers();
+            }
+            public void removeUpdate(DocumentEvent e) {
+            	showFilteredUsers();
+            }
+            public void insertUpdate(DocumentEvent e) {
+            	showFilteredUsers();
+            }
+          });
     }
     
      /**
@@ -127,7 +144,7 @@ public class PestanaUsuarios extends javax.swing.JPanel {
 
     private void buttonModificarPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonModificarPerfilActionPerformed
        //user = this.getUser();
-       PerfilUsuario perfil = new PerfilUsuario(null,true,user);
+       PerfilUsuario perfil = new PerfilUsuario(null, true, user, null);
        UserPanel panel = new UserPanel();
        panel = perfil.getUserPanel1();
        panel.setUser(user);
@@ -137,8 +154,8 @@ public class PestanaUsuarios extends javax.swing.JPanel {
 
     private void buttonVerPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonVerPerfilActionPerformed
         Usuario usr = listaUsuarios1.getSelectedUser();
-        if(!user.getAmigos().isEmpty() && usr != null){
-            PerfilUsuario perfil = new PerfilUsuario(null,true,usr);
+        if(usr != null){
+            PerfilUsuario perfil = new PerfilUsuario(null, true, usr, this.user);
             perfil.setTitle("Información de perfil");
             perfil.setEditable(false);
             perfil.setVisible(true);
@@ -146,7 +163,7 @@ public class PestanaUsuarios extends javax.swing.JPanel {
     }//GEN-LAST:event_buttonVerPerfilActionPerformed
 
     private void filtrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filtrarActionPerformed
-        //FALTA IMPLEMENTAR!!!!
+        showFilteredUsers();
     }//GEN-LAST:event_filtrarActionPerformed
 
     private void filtroAmigosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filtroAmigosActionPerformed
@@ -154,13 +171,13 @@ public class PestanaUsuarios extends javax.swing.JPanel {
             if (filtroAmigos.isSelected()) {
                 Set<Usuario> amigos = new HashSet<>();
                 amigos = this.user.getAmigos();
-                listaUsuarios1.setAmigos(amigos);
+                listaUsuarios1.setUsuariosRelacionados(amigos);
             }
         }
     }//GEN-LAST:event_filtroAmigosActionPerformed
 
     private void nombreFiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreFiltroActionPerformed
-        //FALTA IMPLEMENTAR!!!!
+    	showFilteredUsers();
     }//GEN-LAST:event_nombreFiltroActionPerformed
 
 
@@ -173,4 +190,12 @@ public class PestanaUsuarios extends javax.swing.JPanel {
     private javax.swing.JTextField nombreFiltro;
     // End of variables declaration//GEN-END:variables
 
+    void showFilteredUsers() {
+    	String filterTxt = null;
+        if (filtrar.isSelected()) {
+        	filterTxt = nombreFiltro.getText();
+        }
+    	List<Usuario> usrs = Facade.getInstance().getUsuarioController().listUsers(user, filterTxt, false);
+        listaUsuarios1.setUsuariosRelacionados(usrs);
+    }
 }

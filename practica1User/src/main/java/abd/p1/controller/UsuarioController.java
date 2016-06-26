@@ -51,13 +51,13 @@ public class UsuarioController {
 		return usrs;
 	}
 	
-	public long distance(Usuario usr1, Usuario usr2) {
+	public double distance(Usuario usr1, Usuario usr2) {
 		double phi1 = usr1.getLatitud();
 		double theta1 = usr1.getLongitud();
 		double phi2 = usr2.getLatitud();
 		double theta2 = usr2.getLongitud();
 		double d = SphericalGeometry.haversineFormulaDegrees(phi1, theta1, phi2, theta2);
-		return Math.round(d);
+		return d;
 	}
 	
 	public void storeRandomCoordinates(Usuario usr) {

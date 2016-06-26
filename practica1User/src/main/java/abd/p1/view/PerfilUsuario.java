@@ -18,14 +18,14 @@ public class PerfilUsuario extends javax.swing.JDialog {
     /**
      * Creates new form ModificarPerfil
      */
-    public PerfilUsuario(java.awt.Frame parent, boolean modal, Usuario user) {
+    public PerfilUsuario(java.awt.Frame parent, boolean modal, Usuario user, Usuario baseUser) {
         super(parent, modal);
         initComponents();
         
         this.user = user;
         String txt = user.getDescripcion() == null ? "" : user.getDescripcion();
         this.descripcion.setText(txt);
-        System.out.println("PerfilUsuario -> " + user);//FIXME
+        //System.out.println("PerfilUsuario -> " + user);//FIXME
         
         if(user.getAficiones().isEmpty() ==  false){
            for (Aficion temp : user.getAficiones()){
@@ -43,11 +43,17 @@ public class PerfilUsuario extends javax.swing.JDialog {
         
         ImageIcon img = user.getFotoAsImageIcon();
         if (img == null)
-        	img = new ImageIcon(AvatarPanel.class.getResource("Dino3.png"));
+        	img = new ImageIcon(AvatarPanel.class.getResource("Dino.png"));
     	this.userPanel1.getAvatarPanel().setIcon(img);
         	
         this.jLabel3.setVisible(false);
         this.labelDistancia.setVisible(false);
+        
+        double distancia = 0.0;
+        if (baseUser != null) {
+        	distancia = Facade.getInstance().getUsuarioController().distance(user, baseUser);
+        }
+        labelDistancia.setText(Math.round(distancia) + " m");
     }
 
     public PerfilUsuario(JFrame jFrame, boolean b) {}

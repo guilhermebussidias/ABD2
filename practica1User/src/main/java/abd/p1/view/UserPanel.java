@@ -12,7 +12,8 @@ import javax.swing.JOptionPane;
 
 public class UserPanel extends javax.swing.JPanel {
     
-    private boolean editable = true;
+	private static final long serialVersionUID = 1L;
+	private boolean editable = true;
     private Date fecha;
     private Usuario user;
 
