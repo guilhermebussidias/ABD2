@@ -3,6 +3,9 @@ package abd.p1.view;
 import abd.p1.controller.Facade;
 import abd.p1.model.Aficion;
 import abd.p1.model.Usuario;
+
+import java.text.DecimalFormat;
+
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -52,7 +55,8 @@ public class PerfilUsuario extends javax.swing.JDialog {
         if (baseUser != null) {
         	distancia = Facade.getInstance().getUsuarioController().distance(user, baseUser);
         }
-        labelDistancia.setText(Math.round(distancia) + " m");
+        DecimalFormat numberFormat = new DecimalFormat("#.00");
+        labelDistancia.setText(numberFormat.format(distancia/1000.0) + " Km");
     }
 
     public PerfilUsuario(JFrame jFrame, boolean b) {}
