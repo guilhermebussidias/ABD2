@@ -37,7 +37,7 @@ public class UsuarioDAOImpl extends GenericDAOImpl<Usuario, Integer> implements 
 			Query q = s.createQuery(hql);
 			q.setString("nombre", name);
 			usuario = (Usuario) q.uniqueResult();
-			s.evict(usuario); // Desenganchamos al usuario de la sesión para poder cambiarlo sin que se guarden los cambios
+			//s.evict(usuario); // Desenganchamos al usuario de la sesión para poder cambiarlo sin que se guarden los cambios
 			tx.commit();
 			
 		} catch (Exception e) {
@@ -57,7 +57,7 @@ public class UsuarioDAOImpl extends GenericDAOImpl<Usuario, Integer> implements 
 			q.setString("email", email);
 			q.setMaxResults(1);
 			usuario = (Usuario) q.uniqueResult();
-			s.evict(usuario);
+			//s.evict(usuario);
 			tx.commit();
 		} catch (Exception e) {
 			rollback();

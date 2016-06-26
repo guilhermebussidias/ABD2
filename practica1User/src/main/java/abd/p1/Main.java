@@ -52,12 +52,11 @@ public class Main {
             
             InicioSesion inicioSesion = new InicioSesion(null, true);
             inicioSesion.setVisible(true);
-            String email = inicioSesion.getContrasena();
-            String password = inicioSesion.getCorreo();
+            String password = inicioSesion.getContrasena();
+            String email = inicioSesion.getCorreo();
             boolean isNuevoUsuario = !inicioSesion.isAccept();
             inicioSesion.dispose();
             
-            //UsuarioController usuarioCtrl = new UsuarioController(sf);
             Usuario usuario = null;
             
             if (isNuevoUsuario) {
@@ -69,23 +68,12 @@ public class Main {
             	usuario.setFechaNacimiento(cal.getTime());
             } else {
             	usuario = Facade.getInstance().getUsuarioController().doLogin(email, password);
-            	//System.out.println(usuario);//FIXME
             }
             
             if (usuario == null) {
             	JOptionPane.showMessageDialog(null, "El usuario no existe o la contraseña es incorrecta");
             	return;
             }
-            
-            //ViewManager.getInstance().setUsuario(usuario);
-            
-            /*MainWindow mainWindow = new MainWindow();
-            mainWindow.setVisible(true);
-            
-            if (isNuevoUsuario) {
-            	mainWindow.setUsuarioPerfilado(usuario);
-            	mainWindow.mostrarPerfil();
-            }*/
             
             MainWindow mainWindow = new MainWindow(usuario, isNuevoUsuario);
             mainWindow.setVisible(true);

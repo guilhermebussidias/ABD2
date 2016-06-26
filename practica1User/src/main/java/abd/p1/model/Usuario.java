@@ -53,8 +53,8 @@ public class Usuario {
 	
 	@Column (nullable = true)
 	@ElementCollection
-	//@OneToMany(mappedBy="usuario", fetch=FetchType.EAGER, cascade=CascadeType.ALL, orphanRemoval=true)
-	@OneToMany(mappedBy="usuario", fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	@OneToMany(mappedBy="usuario", fetch=FetchType.EAGER, cascade=CascadeType.ALL, orphanRemoval=true)
+	//@OneToMany(mappedBy="usuario", fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	private List<Aficion> aficiones;
 	
 //	@ManyToMany

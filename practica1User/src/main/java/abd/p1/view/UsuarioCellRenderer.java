@@ -13,7 +13,9 @@ import javax.swing.ListCellRenderer;
 
 public class UsuarioCellRenderer extends UserPanel implements ListCellRenderer<Usuario>{
 
-    @Override
+	private static final long serialVersionUID = 1L;
+
+	@Override
     public Component getListCellRendererComponent(
             JList<? extends Usuario> list, 
             Usuario value, 
@@ -21,7 +23,7 @@ public class UsuarioCellRenderer extends UserPanel implements ListCellRenderer<U
             boolean isSelected, 
             boolean cellHasFocus){
         this.setNombre(value.getNombre());
-        this.setEdad(value.getYears());
+        this.setEdad(value.getEdad() + "");
         this.setEditable(false);
         this.setOpaque(true);
         if (isSelected) {

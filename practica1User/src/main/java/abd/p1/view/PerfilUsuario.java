@@ -280,7 +280,7 @@ public class PerfilUsuario extends javax.swing.JDialog {
 
     private void buttonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGuardarActionPerformed
       this.user.setDescripcion(this.descripcion.getText());
-      System.out.println("ID: " + user.getId());//FIXME
+      System.out.println(user);//FIXME
       Facade.getInstance().getUsuarioController().update(user);
       this.setVisible(false);
     }//GEN-LAST:event_buttonGuardarActionPerformed
@@ -310,6 +310,7 @@ public class PerfilUsuario extends javax.swing.JDialog {
         String aficion = JOptionPane.showInputDialog(null, "Introduce tu nueva aficion");
         Aficion afi = new Aficion();
         afi.setTexto(aficion);
+        afi.setUsuario(user);
         modelo.addElement(afi);
         this.listaAficiones.setModel(modelo);
         this.listaAficiones.setCellRenderer(new AficionCellRenderer());
@@ -331,6 +332,7 @@ public class PerfilUsuario extends javax.swing.JDialog {
         String afi = JOptionPane.showInputDialog(null, "Modifica tu afición", aficion.getTexto());
         Aficion afic = new Aficion();
         afic.setTexto(afi);
+        afic.setUsuario(user);
         modelo.remove(index);
         this.user.borrarAficion(aficion);
         modelo.add(index,afic);
