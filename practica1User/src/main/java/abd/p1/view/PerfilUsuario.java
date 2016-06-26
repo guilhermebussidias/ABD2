@@ -25,7 +25,6 @@ public class PerfilUsuario extends javax.swing.JDialog {
         this.user = user;
         String txt = user.getDescripcion() == null ? "" : user.getDescripcion();
         this.descripcion.setText(txt);
-        //System.out.println("PerfilUsuario -> " + user);//FIXME
         
         if(user.getAficiones().isEmpty() ==  false){
            for (Aficion temp : user.getAficiones()){
@@ -43,7 +42,7 @@ public class PerfilUsuario extends javax.swing.JDialog {
         
         ImageIcon img = user.getFotoAsImageIcon();
         if (img == null)
-        	img = new ImageIcon(AvatarPanel.class.getResource("Dino.png"));
+        	img = new ImageIcon(AvatarPanel.class.getResource("Dino3.png"));
     	this.userPanel1.getAvatarPanel().setIcon(img);
         	
         this.jLabel3.setVisible(false);

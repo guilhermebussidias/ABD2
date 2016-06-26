@@ -1,6 +1,5 @@
 package abd.p1.view;
 
-import abd.p1.controller.Facade;
 import abd.p1.model.Usuario;
 
 public class MainWindow extends javax.swing.JFrame {
@@ -21,80 +20,11 @@ public class MainWindow extends javax.swing.JFrame {
         jTabbedPane1.setTitleAt(0, "Usuarios");
         
         if (isNuevoUsuario) {
-	        //Facade.getInstance().getUsuarioController().save(usuario);
 	        PerfilUsuario perfil = new PerfilUsuario(this, true, usuario, null);
 	        perfil.setEditable(true);
 	        perfil.setVisible(true);
         }
         
-        /*
-        boolean check = false;
-        
-        InicioSesion ini = new InicioSesion(this,true);
-        ini.setVisible(true);
-        
-        List<Aficion> aficiones = new ArrayList<>();
-        Aficion afi1 = new Aficion();
-        afi1.setTexto("Esgrima");
-        Aficion afi2 = new Aficion();
-        afi2.setTexto("Voleibal");
-        Aficion afi3 = new Aficion();
-        afi3.setTexto("Futbol");
-        Aficion afi4 = new Aficion();
-        afi4.setTexto("Atletismo");        
-        
-        aficiones.add(afi1);
-        aficiones.add(afi2);
-        aficiones.add(afi3);
-        aficiones.add(afi4);
-        
-        ImageIcon foto3 = 
-            new ImageIcon(AvatarPanel.class.getResource("Dino3.png"));
-       while(ini.isAccept() && !check){ 
-            
-            if (ini.getCorreo().equals("a@a.com") && ini.getContrasena().equals("1234")) {
-                check = true;
-                ImageIcon foto1 = 
-                    new ImageIcon(AvatarPanel.class.getResource("Dino.png"));
-                ImageIcon foto2 = 
-                    new ImageIcon(AvatarPanel.class.getResource("Dino2.png"));
-                ini.setVisible(false);
-                Calendar fecha = new GregorianCalendar(1985, 4, 14);
-                Date date = fecha.getTime();
-                Set<Usuario> amigos = new HashSet<>();
-                Usuario user7 = new Usuario(foto1);
-                Usuario user8 = new Usuario(foto2);
-                user7.setNombre("Iker");
-                user8.setNombre("Maritxu");
-                user7.setFechacimiento(date);
-                user8.setFechacimiento(date);
-                amigos.add(user7);
-                amigos.add(user8);
-                Usuario user = new Usuario("Antonio", date, "a@a.com", "1234", "Varón", "Hombres", "Me gusta los perros",aficiones,foto3,amigos);
-                this.pestanaUsuarios1.setUser(user);
-            }
-            else{
-                JOptionPane.showMessageDialog(this,
-                "Usuario Incorrecto",
-                "Inicio de sesión",
-                JOptionPane.ERROR_MESSAGE);
-                ini.setVisible(true);
-            }
-       
-       }
-        if (!ini.isAccept()){
-            ImageIcon foto1 = 
-                    new ImageIcon(AvatarPanel.class.getResource("Dino.png"));
-            Usuario user = new Usuario(foto1);
-            user.setEmail(ini.getCorreo());
-            //FALTA AÑADIR COORDENADAS POR DEFECTO
-            user.setContrasena(ini.getContrasena());
-            PerfilUsuario perfil = new PerfilUsuario(null,true,user);
-            perfil.setEditable(true);
-            perfil.setVisible(true);
-            this.pestanaUsuarios1.setUser(user);
-        }
-        */
     }
 
     /**

@@ -7,9 +7,11 @@ import javax.swing.ImageIcon;
 
 
 public class AvatarPanel extends javax.swing.JPanel {
-    private static final int SIZE = 64;
+
+	private static final long serialVersionUID = 1L;
+	private static final int SIZE = 64;
     private static final ImageIcon defaultIcon = 
-            new ImageIcon(AvatarPanel.class.getResource("Dino.png"));
+            new ImageIcon(AvatarPanel.class.getResource("Dino3.png"));
     
     private ImageIcon icon;
     private Image rescaledIcon;
@@ -25,6 +27,7 @@ public class AvatarPanel extends javax.swing.JPanel {
         this.setPreferredSize(new Dimension(SIZE, SIZE));
         this.icon = icon;
         this.rescaledIcon = icon.getImage().getScaledInstance(SIZE, SIZE, Image.SCALE_DEFAULT);
+        initComponents();
     }
 
     public ImageIcon getIcon() {
